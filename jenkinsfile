@@ -6,13 +6,13 @@ pipeline {
   }
 
   stages {
-    stage('inBuild') {
+    stage('Build') {
         steps {
             sh 'mvn clean package'
         }
     }
 
-    stage('Testfor') {
+    stage('Test') {
       steps {
           echo "${env.BUILD_NUMBER}"
           echo "${env.BUILD_URL}"
@@ -20,37 +20,37 @@ pipeline {
     }
 
 
-    stage('check Code Quality') {
+    stage('Code Quality') {
       steps {
-          echo 'Quality'
+          echo 'in Quality'
         }
     }
 
-    stage('from Deploy to Dev') {
+    stage('Deploy to Dev') {
       steps {
-          echo 'Dev'
+          echo 'to Dev'
         }
     }
 
-    stage('from Deploy to Test') {
+    stage('Deploy to Test') {
       steps {
-          echo 'Test'
+          echo 'fro Test'
         }
     }
 
-    stage('from Deploy to UAT') {
+    stage('Deploy to UAT') {
       steps {
-          echo 'UAT'
+          echo 'to UAT'
         }
     }
 
     stage('Deploy to Pre_prod') {
       steps {
-            echo 'Staging'
+            echo 'Staging group'
           }
     }
 
-    stage('for Prod Approval') {
+    stage('Prod Approval') {
       steps {
         script {
           if (env.BRANCH_NAME == "master") {
